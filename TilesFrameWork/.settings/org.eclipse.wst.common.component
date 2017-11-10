@@ -6,6 +6,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/Book"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/Theory"/>
         <property name="context-root" value="TilesFrameWork"/>
         <property name="java-output-path" value="/TilesFrameWork/target/classes"/>
     </wb-module>
