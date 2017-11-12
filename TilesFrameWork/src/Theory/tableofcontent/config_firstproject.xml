@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE unspecified PUBLIC "//UNKNOWN/" "unknown.dtd">
+[DEMO - AdminController]
+1.Basic <With Struts 2>
+- to use tiles we need:
+	+ struts2-lib (core or convention)
+	+ servlet-api
+	+ struts-tiles-lib (not tiles-core)
+1.Config
+- Action:
+	+ {localtion="definition_name", result="tiles"}
+	+ extends="tiles-default"
+- tiles.xml<tiles.xml can be any where under folder web app, not only under WEB-INF> :
+	<tiles-definitions> <!-- Wraper of definition -->
+		<definition name="definition_name" template="layout_directory_name"> <!-- 1 element result , name = location in struts2  -->
+			<put-attribute name="attibute_name" value="content" type="tiles_type"/> 
+			<!-- content can be String or Object -->
+			<!-- 
+				type can be:
+				1.String
+				2.Template (url)
+				3.Definition : it will search in all definition (xml file) where attibute_name = this attibute_name.
+				4.Object: the value is used as it is.
+			 -->
+		</definition>
+	</tiles-definitions>
+- layout.jsp <!-- Define a layout and its element -->: 
+	<%@tablib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+	+ define body:
+	<tiles:putAttibute name="header"/>
+	<tiles:putAttibute name="body"/>
+	<tiles:putAttibute name="footer"/>
+	<!-- we can define an element(tiles) as : body,footer,header,menu,content,right-pan,left-pan...  -->
+- index.jsp :	
+	 this is the part of result you want to put to layout,it's path must be in layout_directory_name in tiles.xml file.
+*Note:
+- tiles only execute in layout page:
+	eg: if you use <tiles:getAsString name="title"/> in content (index.jsp,menu.jsp...) it wil not found
+- tiles only get content of element of content file (index.jsp,menu.jsp..) in <BODY></BODY> tag, it mean that. it don't get 
+title,meta... from content file.	
+	
